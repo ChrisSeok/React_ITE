@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            h1 {
+                font-size: 50px;
+                font-family: '궁서체';
+                color: blueviolet;
+            }
+
+            /*class 선택자*/
+            .title {
+                color: antiquewhite;
+            }
+
+            /*id 선택자*/
+            #title {
+                font-size: 30px;
+                color: cornflowerblue;
+            }
+        </style>
+    </head>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+    <body>
+        <h1 class="title">HTML BASIC</h1>
+        <h1>HTML BASIC</h1>
+        <h1 class="title">HTML BASIC</h1>
+        <h1 id="title">HTML BASIC</h1>
+        <h1>HTML BASIC</h1>
+        <h1>HTML BASIC</h1>
+        <button type="button" onclick="changeContent()">내용바꾸기</button>
+        <script>
+            //document.getElementById('title').innerText = 'HTML 기본'; //이 코드를 여러번 이용한다면?
+            //위 코드가 자동으로 실행되지 않게 하고싶다! => 함수
+            function changeContent() {
+                // 아래 코드의 별칭으로 changeContent 라는 이름을 줬다!
+                document.getElementById('title').innerText = 'HTML 기본'; //재활용
+            }
+        </script>
+    </body>
+</html>

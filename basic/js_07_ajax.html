@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script
+            src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"
+        ></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios@1.7.2/dist/axios.min.js"></script>
+    </head>
+    <body>
+        <h1><div id="msg"></div></h1>
+        <script>
+            $.get('msg.json', {}, function (data) {
+                //Call-back queue에 function등록
+                result = data;
+                console.log('1.', result);
+            });
+            // console.log('2.', result);
+
+            let result2 = '';
+            $.get('msg.json', {})
+                .done(function (data) {
+                    //여기서 function은 콜백함수이고 이름이 없는 익명함수이다.
+                    //done 메서드는 비동기 작업이 완료되었을 때 실행될 콜백 함수를 지정.
+                    result2 = data;
+                    document.querySelector('#msg').innerHTML = result2.text;
+                    console.log('3.', result2);
+                })
+                .done(function () {
+                    console.log('4.', result2);
+                })
+                .fail(function () {
+                    console.log('5.에러', data);
+                });
+            //done으로 동기화?
+            fetch('msg.json', { method: 'GET' })
+                .then((response) => {
+                    if (response.ok) return response.json();
+                })
+                .then((data) => {
+                    console.log('6.', data);
+                })
+                .catch(function (error) {
+                    console.log('7.에러', data);
+                });
+            //가상 DOM을 핸들링할 땐 axios를 쓴다.
+            axios
+                .get('msg.json', {})
+                .then((data) => {
+                    console.log('8.', data);
+                })
+                .catch(function (error) {
+                    console.log('9.에러', data);
+                });
+
+            axios({
+                method: 'get',
+                url: 'msg.json',
+                data: {
+                    param: '1234',
+                },
+            })
+                .then((data) => {
+                    console.log('10.', data);
+                })
+                .catch(function (error) {
+                    console.log('11.에러', data);
+                });
+        </script>
+    </body>
+</html>

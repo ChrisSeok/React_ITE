@@ -1,0 +1,25 @@
+{
+    "terminal.integrated.env.windows": {
+        //nodejs 세팅
+        //이 src안에서만 적용된다.
+        //압축해서 배포하면 모두가 똑같은 환경에서 개발할 수 있다.
+        "NODEJS_HOME": "C:\\lect_labs\\labs_react\\nodejs", //node.exe의 경로
+        "NODE_PATH": "C:\\lect_labs\\labs_react\\node_modules",
+        "PATH": "C:\\lect_labs\\labs_react\\nodejs;${env:PATH};"
+    },
+    "terminal.integrated.defaultProfile.windows": "Command Prompt",
+    "code-runner.runInTerminal": true,
+    "liveServer.settings.host": "localhost",
+    "liveServer.settings.port": 81,
+    "liveServer.settings.CustomBrowser": "chrome",
+    "editor.wordWrap": "on",
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "prettier.printWidth": 120,
+    "prettier.useTabs": false,
+    "prettier.tabWidth": 4,
+    "prettier.trailingComma": "all",
+    "prettier.singleQuote": true,
+    "prettier.semi": true,
+    "prettier.bracketSpacing": true
+}

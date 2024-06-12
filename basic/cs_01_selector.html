@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            /* 기본 선택자 */
+            .class01 {
+                background-color: silver;
+            }
+            #fruit {
+                background-color: transparent;
+            }
+
+            h1 {
+                text-decoration: underline;
+            }
+
+            /* 복합 선택자 */
+
+            ul li {
+                /* 자손 */
+                color: blue;
+            }
+            /* 자식 선택자 */
+            ul > li {
+                background-color: pink;
+            }
+            /* 선택자는 우선순위가 있어요! 기본 선택자는 복합 선택자보다 우선순위가 높아요.*/
+            /*바로 뒤의 형제들 선택*/
+            li#기준 ~ li {
+                color: plum;
+            }
+            /*바로 뒤의 형제 하나만! 선택*/
+            li#기준 + li {
+                color: green;
+            }
+
+            /* 속성 선택자 */
+            li[title] {
+                color: orange;
+            }
+
+            /* 속성 존재 여부 */
+            li[title='할인'] {
+                color: red;
+            }
+
+            /* 속성값이 같다면 */
+            li[title~='무료배송']::after {
+                /* content 중요 */
+                content: ' [무료배송]';
+                /* 공백 기준으로 포함된다면 */
+            }
+
+            /* title 속성이 품절로 끝나면*/
+            /* 품절이라는 문구를 나타내기 위해 jQuery 사용해봅시다 */
+            li[title$='품절'] {
+                color: gray;
+            }
+
+            /* title 속성이 hot으로 시작한다면 */
+            li[title^='hot'] {
+                color: gray;
+                font-weight: bold;
+            }
+
+            /* title 속성에 무료가 포함된다면 */
+            li[title*='무료'] {
+                text-decoration: overline;
+            }
+        </style>
+        <script
+            src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"
+        ></script>
+    </head>
+    <body>
+        <ul>
+            <!--zencode-->
+            <li>요소1</li>
+            <li class="class01">요소2</li>
+            <li class="class01" id="기준">요소3</li>
+            <li>요소4</li>
+            <li id="fruit">
+                요소5
+                <ol>
+                    <li title="">사과</li>
+                    <li title="할인">배</li>
+                    <li title="할인 무료배송">바나나</li>
+                    <li title="무료배송 품절">수박</li>
+                    <li title="hot 무료배송">복숭아</li>
+                    <li>외부 쇼핑</li>
+                </ol>
+            </li>
+            <li>요소6</li>
+            <li>요소7</li>
+            <li>요소8</li>
+        </ul>
+        <h1>Header</h1>
+        <script>
+            /* 품절로 끝나는 요소 element (수박)를 클릭하면 alert 뜨도록 */
+            $('li[title$="품절"]').on('click', function () {
+                alert('품절입니다');
+            });
+
+            /* jQuery ?  dom객체 관리하는게 document*/
+            /* JS로 DOM에 직접 생성 */
+            document.querySelector('h1').addEventListener('click', function () {
+                document.querySelector('body').appendChild(document.createElement('h1')).textContent = '추가';
+            });
+        </script>
+    </body>
+</html>
